@@ -1,4 +1,7 @@
-def get_mask_card_number(card_number: int) -> str:
+from typing import Union
+
+
+def get_mask_card_number(card_number: Union[int, str]) -> str:
     """changing card number with mask"""
 
     mask_str = "XXXX XX** **** XXXX"
@@ -13,12 +16,12 @@ def get_mask_card_number(card_number: int) -> str:
         elif mask_list[i] == "*":
             counter += 1
 
-    mask_str = "".join(mask_list)
+    mask_card_number = "".join(mask_list)
 
-    return mask_str
+    return mask_card_number
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: Union[int, str]) -> str:
     """changing account number with mask"""
 
     mask_str = "**XXXX"
@@ -33,6 +36,6 @@ def get_mask_account(account_number: int) -> str:
         elif mask_list[i] == "*":
             counter += 1
 
-    mask_str = "".join(mask_list)
+    mask_account_number = "".join(mask_list)
 
-    return mask_str
+    return mask_account_number
