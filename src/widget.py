@@ -17,5 +17,6 @@ def mask_account_card(card_info: str) -> str:
 
 
 def get_date(date_time: str) -> str:
+    """changing date info with mask"""
     date = date_time.split("T")[0].split("-")
     return date[2] + "." + date[1] + "." + date[0]
