@@ -1,5 +1,6 @@
 from src import masks
 
+
 def mask_account_card(card_info: str) -> str:
     """changing card info with mask"""
     card_info_list = card_info.split(" ")
