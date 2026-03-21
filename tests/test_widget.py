@@ -3,7 +3,8 @@ import pytest
 from src import widget
 
 
-@pytest.mark.parametrize("string, expected",
+@pytest.mark.parametrize(
+    "string, expected",
     [
         ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
         ("Счет 64686473678894779589", "Счет **9589"),

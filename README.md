@@ -43,5 +43,10 @@ A correct work of the function **'get_date'** checks with **'pytest.fixture'**
 For more information look at the **tests/test_widget.py**
 
 
+* There are tests for the module **'generators.py'** in the module **'test_generators.py'**.
+A correct work of functions **'filter_by_currency'** and **'transaction_descriptions'**
+and **'card_number_generator'** checks with **'pytest.fixture'**.
+For more information look at the **tests/test_generators.py**
+
 ## License
 Distributed under the Unlicense License. See LICENSE.txt for more information
