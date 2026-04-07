@@ -1,0 +1,2 @@
+get_mask_account ok
+result: **3245
