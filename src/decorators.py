@@ -9,6 +9,7 @@ P = ParamSpec("P")
 
 
 def log(filename: str = ""):
+    """This decorator logs the start and end of the function execution, as well as its results or errors that occurred"""
     def my_decorator(func: Callable[P, R]) -> Callable[P, R]:
         @wraps(func)
         def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
