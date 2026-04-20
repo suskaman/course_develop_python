@@ -29,7 +29,8 @@ def get_mask_account(account_number: Union[int, str]) -> str:
 
     mask_str = "**XXXX"
     mask_list = list(mask_str)
-    card_number_str = str(account_number)[-len(mask_str):]
+    len_mask_str = len(mask_str)
+    card_number_str = str(account_number)[-len_mask_str:]
     counter = 0
 
     for i in range(len(mask_list)):
