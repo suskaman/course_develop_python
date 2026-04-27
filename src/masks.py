@@ -1,7 +1,7 @@
 from typing import Union
 import logging
 
-
+# create logger
 mask_logger = logging.getLogger("app.masks")
 file_handler = logging.FileHandler('../logs/masks.log', mode='w')
 console_formatter = logging.Formatter('%(asctime)s - %(filename)s - %(levelname)s - %(message)s')
@@ -37,13 +37,15 @@ def get_mask_card_number(card_number: Union[int, str]) -> str | None:
                 counter += 1
 
         mask_card_number = "".join(mask_list)
+
+        mask_logger.info(f"a mask for card number is created")
         return mask_card_number
 
     except IndexError as ex:
         mask_logger.error(f"error happened: {ex}", exc_info=True)
 
     finally:
-        mask_logger.info(f"a mask for card number is created")
+        mask_logger.info(f"end getting mask card number")
 
 
 
@@ -70,10 +72,11 @@ def get_mask_account(account_number: Union[int, str]) -> str:
 
         mask_account_number = "".join(mask_list)
 
+        mask_logger.info(f"a mask for account number is created")
         return mask_account_number
 
     except IndexError as ex:
         mask_logger.error(f"error happened: {ex}", exc_info=True)
 
     finally:
-        mask_logger.info(f"a mask for account number is created")
+        mask_logger.info(f"end getting mask account number")
