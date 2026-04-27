@@ -10,8 +10,6 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 
-headers = {"apikey": f"{api_key}"}
-
 
 def get_amount_from_transaction(transaction: dict) -> float | None | Any:
     """this function gets the amount from the transaction
@@ -25,6 +23,8 @@ def get_amount_from_transaction(transaction: dict) -> float | None | Any:
         currency = transaction["operationAmount"]["currency"]["code"]
 
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&amount={amount}"
+        headers = {"apikey": api_key}
+
         response = requests.get(url, headers=headers)
 
         status_code = response.status_code
@@ -43,3 +43,4 @@ def get_amount_from_transaction(transaction: dict) -> float | None | Any:
         print("KeyError: can not find key")
 
     return None
+
