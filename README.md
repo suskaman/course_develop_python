@@ -48,5 +48,9 @@ A correct work of functions **'filter_by_currency'** and **'transaction_descript
 and **'card_number_generator'** checks with **'pytest.fixture'**.
 For more information look at the **tests/test_generators.py**
 
+* There are tests for the module **'decorators.py'** in the module **'test_decorators.py'**.
+A correct work of decorator **'log'** checks with built-in fixture **capsys**.
+For more information look at the **tests/test_decorators.py**
+
 ## License
 Distributed under the Unlicense License. See LICENSE.txt for more information

@@ -9,6 +9,9 @@ def get_mask_card_number(card_number: Union[int, str]) -> str:
     card_number_str = str(card_number)
     counter = 0
 
+    if len(card_number_str) != 16:
+        raise Exception("Invalid card number")
+
     for i in range(len(mask_list)):
         if mask_list[i] == "X":
             mask_list[i] = card_number_str[counter]
@@ -26,7 +29,8 @@ def get_mask_account(account_number: Union[int, str]) -> str:
 
     mask_str = "**XXXX"
     mask_list = list(mask_str)
-    card_number_str = str(account_number)[-len(mask_str):]
+    len_mask_str = len(mask_str)
+    card_number_str = str(account_number)[-len_mask_str:]
     counter = 0
 
     for i in range(len(mask_list)):
