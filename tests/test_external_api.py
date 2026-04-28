@@ -14,7 +14,7 @@ def test_get_amount_from_transaction(list_for_filter_by_currency: list[dict]) ->
         load_dotenv()
         api_key = os.getenv("API_KEY")
 
-        headers = {"apikey": api_key}
+        headers = {"apikey": f"{api_key}"}
 
         url = "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=9824.07"
-        get_amount.assert_called_with( url, headers=headers)
+        get_amount.assert_called_with(url, headers=headers)
