@@ -4,7 +4,7 @@ import logging
 # create logger
 util_logger = logging.getLogger("app.utils")
 file_handler = logging.FileHandler("../course_develop_python/logs/utils.log", mode="w", encoding='utf-8')
-file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s - %(message)s")
+file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(funcName)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 util_logger.addHandler(file_handler)
 util_logger.setLevel(logging.DEBUG)
@@ -12,7 +12,7 @@ util_logger.setLevel(logging.DEBUG)
 
 def get_transactions(path_to_json: str) -> list:
     """return a list of all transactions"""
-    util_logger.info("start getting transactions")
+    util_logger.info("START getting transactions")
     try:
         with open(path_to_json, "r", encoding="utf-8") as f:
             util_logger.info("opened json file")
@@ -38,4 +38,4 @@ def get_transactions(path_to_json: str) -> list:
         return [{}]
 
     finally:
-        util_logger.info("end getting transactions")
+        util_logger.info("END getting transactions")
