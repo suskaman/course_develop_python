@@ -1,13 +1,9 @@
 import json
+from logging_config import setup_logging
 import logging
 
 # create logger
-util_logger = logging.getLogger("app.utils")
-file_handler = logging.FileHandler("../course_develop_python/logs/utils.log", mode="w", encoding='utf-8')
-file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(funcName)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(file_formatter)
-util_logger.addHandler(file_handler)
-util_logger.setLevel(logging.DEBUG)
+util_logger = logging.getLogger("utils")
 
 
 def get_transactions(path_to_json: str) -> list:
@@ -39,3 +35,7 @@ def get_transactions(path_to_json: str) -> list:
 
     finally:
         util_logger.info("END getting transactions")
+
+
+if __name__ == '__main__':
+    setup_logging()

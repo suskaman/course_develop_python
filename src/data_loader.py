@@ -1,13 +1,8 @@
 import pandas as pd
+from logging_config import setup_logging
 import logging
-
 # create logger
-data_logger = logging.getLogger("app.data_logger")
-file_handler = logging.FileHandler("../logs/data_logger.log", mode='w', encoding='utf-8')
-file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(funcName)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(file_formatter)
-data_logger.addHandler(file_handler)
-data_logger.setLevel(logging.DEBUG)
+data_logger = logging.getLogger("data_loader")
 
 def get_data_from_csv(path_to_csv: str):
     """this function gets the data from the csv file"""
@@ -15,15 +10,19 @@ def get_data_from_csv(path_to_csv: str):
 
     try:
         df = pd.read_csv(path_to_csv)
-
+        data_logger.info("CSV file loaded")
         return df.to_dict(orient='records')
 
     except FileNotFoundError:
         data_logger.error('invalid file path')
-        return None
+        return [{}]
+
+    except pd.errors.EmptyDataError:
+        data_logger.error("CSV file is empty")
+        return [{}]
 
     finally:
-        data_logger.info("END getting data from csv")
+        data_logger.info("FINISH")
 
 def get_data_from_excel(path_to_xlsx: str):
     """this function gets the data from the excel file"""
@@ -31,16 +30,21 @@ def get_data_from_excel(path_to_xlsx: str):
 
     try:
         df = pd.read_excel(path_to_xlsx)
-
+        data_logger.info("Excel file loaded")
         return df.to_dict(orient='records')
 
     except FileNotFoundError:
         data_logger.error('invalid file path')
-        return None
+        return [{}]
+
+    except pd.errors.EmptyDataError:
+        data_logger.error("EXCEL file is empty")
+        return [{}]
 
     finally:
-        data_logger.info("END getting data from excel")
+        data_logger.info("FINISH")
 
 if __name__ == '__main__':
-    print(get_data_from_csv('../data/transactions.csv'))
-    print(get_data_from_excel('../data/transactions_excel.xlsx'))
+    setup_logging()
+
+    get_data_from_csv('../data/transactions.csv')
