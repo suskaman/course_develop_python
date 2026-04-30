@@ -1,6 +1,7 @@
-from logging_config import setup_logging
 import logging
 from typing import Union
+
+from logging_config import setup_logging
 
 # create logger
 mask_logger = logging.getLogger("masks")
@@ -72,5 +73,5 @@ def get_mask_account(account_number: Union[int, str]) -> str:
         mask_logger.info("END getting mask account number")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     setup_logging()

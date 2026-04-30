@@ -1,20 +1,24 @@
-import pandas as pd
-from logging_config import setup_logging
 import logging
+
+import pandas as pd
+
+from logging_config import setup_logging
+
 # create logger
 data_logger = logging.getLogger("data_loader")
 
-def get_data_from_csv(path_to_csv: str):
+
+def get_data_from_csv(path_to_csv: str) -> list[dict]:
     """this function gets the data from the csv file"""
     data_logger.info("START getting data from csv")
 
     try:
         df = pd.read_csv(path_to_csv)
         data_logger.info("CSV file loaded")
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
 
     except FileNotFoundError:
-        data_logger.error('invalid file path')
+        data_logger.error("invalid file path")
         return [{}]
 
     except pd.errors.EmptyDataError:
@@ -24,17 +28,18 @@ def get_data_from_csv(path_to_csv: str):
     finally:
         data_logger.info("FINISH")
 
-def get_data_from_excel(path_to_xlsx: str):
+
+def get_data_from_excel(path_to_xlsx: str) -> list[dict]:
     """this function gets the data from the excel file"""
-    data_logger.info('START getting data from excel')
+    data_logger.info("START getting data from excel")
 
     try:
         df = pd.read_excel(path_to_xlsx)
         data_logger.info("Excel file loaded")
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
 
     except FileNotFoundError:
-        data_logger.error('invalid file path')
+        data_logger.error("invalid file path")
         return [{}]
 
     except pd.errors.EmptyDataError:
@@ -44,7 +49,8 @@ def get_data_from_excel(path_to_xlsx: str):
     finally:
         data_logger.info("FINISH")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     setup_logging()
 
-    get_data_from_csv('../data/transactions.csv')
+    get_data_from_csv("../data/transactions.csv")

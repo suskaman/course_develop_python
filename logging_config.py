@@ -1,10 +1,8 @@
 import logging.config
 
-
 LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
-
     "formatters": {
         "console": {
             "format": '"%(asctime)s" | "%(levelname)-8s" | "%(funcName)s" | %(name)s | "%(message)s"',
@@ -16,7 +14,6 @@ LOGGING_CONFIG = {
             ),
         },
     },
-
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
@@ -24,7 +21,6 @@ LOGGING_CONFIG = {
             "formatter": "console",
             "stream": "ext://sys.stdout",
         },
-
         "file_data_loader": {
             "class": "logging.FileHandler",
             "level": "INFO",
@@ -33,7 +29,6 @@ LOGGING_CONFIG = {
             "encoding": "utf-8",
             "mode": "w",
         },
-
         "file_masks": {
             "class": "logging.FileHandler",
             "level": "INFO",
@@ -42,7 +37,6 @@ LOGGING_CONFIG = {
             "encoding": "utf-8",
             "mode": "w",
         },
-
         "file_utils": {
             "class": "logging.FileHandler",
             "level": "INFO",
@@ -51,7 +45,6 @@ LOGGING_CONFIG = {
             "encoding": "utf-8",
             "mode": "w",
         },
-
         "file_root": {
             "class": "logging.handlers.RotatingFileHandler",
             "level": "INFO",
@@ -61,9 +54,8 @@ LOGGING_CONFIG = {
             "backupCount": 5,
             "encoding": "utf-8",
             "mode": "w",
-        }
+        },
     },
-
     "loggers": {
         "data_loader": {
             "level": "DEBUG",
@@ -81,7 +73,6 @@ LOGGING_CONFIG = {
             "propagate": False,
         },
     },
-
     "root": {
         "level": "DEBUG",
         "handlers": ["file_root"],
@@ -89,5 +80,5 @@ LOGGING_CONFIG = {
 }
 
 
-def setup_logging():
+def setup_logging() -> None:
     logging.config.dictConfig(LOGGING_CONFIG)

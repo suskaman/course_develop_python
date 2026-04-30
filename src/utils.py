@@ -1,6 +1,7 @@
 import json
-from logging_config import setup_logging
 import logging
+
+from logging_config import setup_logging
 
 # create logger
 util_logger = logging.getLogger("utils")
@@ -37,5 +38,5 @@ def get_transactions(path_to_json: str) -> list:
         util_logger.info("END getting transactions")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     setup_logging()
