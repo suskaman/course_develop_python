@@ -5,11 +5,11 @@ LOGGING_CONFIG = {
     "disable_existing_loggers": False,
     "formatters": {
         "console": {
-            "format": '"%(asctime)s" | "%(levelname)-8s" | "%(funcName)s" | %(name)s | "%(message)s"',
+            "format": '["%(asctime)s"] | "%(levelname)s" | "%(funcName)s" | %(name)s | "%(message)s"',
         },
         "file": {
             "format": (
-                "%(asctime)s | %(levelname)-8s | %(name)s | "
+                "[%(asctime)s] | %(levelname)s | %(name)s | "
                 '%(filename)s:%(lineno)d | %(funcName)s() | "%(message)s"'
             ),
         },
@@ -17,13 +17,13 @@ LOGGING_CONFIG = {
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "console",
             "stream": "ext://sys.stdout",
         },
         "file_data_loader": {
             "class": "logging.FileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "file",
             "filename": "../logs/data_loader.log",
             "encoding": "utf-8",
@@ -31,7 +31,7 @@ LOGGING_CONFIG = {
         },
         "file_masks": {
             "class": "logging.FileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "file",
             "filename": "../logs/masks.log",
             "encoding": "utf-8",
@@ -39,7 +39,7 @@ LOGGING_CONFIG = {
         },
         "file_utils": {
             "class": "logging.FileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "file",
             "filename": "../logs/utils.log",
             "encoding": "utf-8",
@@ -47,7 +47,7 @@ LOGGING_CONFIG = {
         },
         "file_root": {
             "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "file",
             "filename": "../logs/app.log",
             "maxBytes": 1024,

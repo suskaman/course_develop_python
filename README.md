@@ -23,6 +23,13 @@ git remote -v # confirm the changes
 ## Usage example
 This application is under developing
 
+## logging
+The project write a logs into directory 'logs'.
+* The default log level is DEBUG for all of them.
+* Format for console: [YYYY-MM-DD HH:mm:ss] | levelname | funcName | name | message
+* Format for file: [YYYY-MM-DD HH:mm:ss] | levelname | name | filename:lineno | funcName | message
+
+
 ## Testing of a modules
 All code of this project are testing on the package **'tests'**.
 Module **conftest.py** has a fixtures for test modules.
@@ -48,9 +55,31 @@ A correct work of functions **'filter_by_currency'** and **'transaction_descript
 and **'card_number_generator'** checks with **'pytest.fixture'**.
 For more information look at the **tests/test_generators.py**
 
+
 * There are tests for the module **'decorators.py'** in the module **'test_decorators.py'**.
-A correct work of decorator **'log'** checks with built-in fixture **capsys**.
+A correct work of the decorator **'log'** checks with built-in fixture **capsys**.
 For more information look at the **tests/test_decorators.py**
+
+
+* There are tests for the module **'data_loader.py'** in the module **'test_data_loader.py'**.
+A correct work of functions **'get_data_from_csv'** and **'get_data_from_excel'** checks with mock and patch.
+For more information look at the **tests/test_data_loader.py**
+
+
+* There are tests for the module **'external_api.py'** in the module **'test_external_api.py'**.
+A correct work of the function **'get_amount_from_transaction'** checks with mock and patch.
+For more information look at the **tests/test_external_api.py**
+
+
+* There are tests for the module **'utils.py'** in the module **'test_utils.py'**.
+A correct work of the function **'get_transactions'** checks with mock and patch.
+For more information look at the **tests/test_utils.py**
+
+
+**For start tests use this command in the terminal**:
+```
+pytest tests
+```
 
 ## License
 Distributed under the Unlicense License. See LICENSE.txt for more information
