@@ -1,18 +1,15 @@
 import logging
 from typing import Union
 
+from logging_config import setup_logging
+
 # create logger
-mask_logger = logging.getLogger("app.masks")
-file_handler = logging.FileHandler("../course_develop_python/logs/masks.log", mode="w", encoding='utf-8')
-file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(file_formatter)
-mask_logger.addHandler(file_handler)
-mask_logger.setLevel(logging.DEBUG)
+mask_logger = logging.getLogger("masks")
 
 
 def get_mask_card_number(card_number: Union[int, str]) -> str:
     """changing card number with mask"""
-    mask_logger.info("start to create a mask for card number")
+    mask_logger.info("START to create a mask for card number")
 
     mask_str = "XXXX XX** **** XXXX"
     mask_list = list(mask_str)
@@ -39,12 +36,12 @@ def get_mask_card_number(card_number: Union[int, str]) -> str:
         return ""
 
     finally:
-        mask_logger.info("end getting mask card number")
+        mask_logger.info("END getting mask card number")
 
 
 def get_mask_account(account_number: Union[int, str]) -> str:
     """changing account number with mask"""
-    mask_logger.info("start to create a mask for account number ")
+    mask_logger.info("START to create a mask for account number ")
 
     mask_str = "**XXXX"
     mask_list = list(mask_str)
@@ -73,7 +70,8 @@ def get_mask_account(account_number: Union[int, str]) -> str:
         return ""
 
     finally:
-        mask_logger.info("end getting mask account number")
+        mask_logger.info("END getting mask account number")
+
 
 if __name__ == "__main__":
-    get_mask_card_number(1234123412341234)
+    setup_logging()

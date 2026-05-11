@@ -10,7 +10,6 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 
-
 def get_amount_from_transaction(transaction: dict) -> float | None | Any:
     """this function gets the amount from the transaction
     if currency is an EUR or USD then it converts it to RUB and return"""
@@ -43,4 +42,3 @@ def get_amount_from_transaction(transaction: dict) -> float | None | Any:
         print("KeyError: can not find key")
 
     return None
-
