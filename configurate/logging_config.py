@@ -45,6 +45,14 @@ LOGGING_CONFIG = {
             "encoding": "utf-8",
             "mode": "w",
         },
+        "file_finder": {
+            "class": "logging.FileHandler",
+            "level": "DEBUG",
+            "formatter": "file",
+            "filename": "../logs/finder.log",
+            "encoding": "utf-8",
+            "mode": "w",
+        },
         "file_root": {
             "class": "logging.handlers.RotatingFileHandler",
             "level": "DEBUG",
@@ -72,6 +80,11 @@ LOGGING_CONFIG = {
             "handlers": ["file_utils"],
             "propagate": False,
         },
+        "finder": {
+            'level': 'DEBUG',
+            'handlers': ['file_finder'],
+            'propagate': False,
+        }
     },
     "root": {
         "level": "DEBUG",

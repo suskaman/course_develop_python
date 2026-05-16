@@ -1,7 +1,7 @@
 import json
 import logging
 
-from logging_config import setup_logging
+from configurate.logging_config import setup_logging
 
 # create logger
 util_logger = logging.getLogger("utils")
