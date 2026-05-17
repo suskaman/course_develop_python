@@ -7,7 +7,7 @@ from configurate.logging_config import setup_logging
 util_logger = logging.getLogger("utils")
 
 
-def get_transactions(path_to_json: str) -> list:
+def get_data_from_json(path_to_json: str) -> list[dict]:
     """return a list of all transactions"""
     util_logger.info("START getting transactions")
     try:
@@ -40,3 +40,4 @@ def get_transactions(path_to_json: str) -> list:
 
 if __name__ == "__main__":
     setup_logging()
+    get_data_from_json("C:/Users/maks/Desktop/transactions.json")

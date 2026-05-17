@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 from src.external_api import get_amount_from_transaction
 
 
-def test_get_amount_from_transaction(list_for_filter_by_currency: list[dict]) -> None:
+def test_get_amount_from_transaction(list_of_transactions: list[dict]) -> None:
     with patch("requests.get") as get_amount:
         get_amount.return_value.json.return_value = {"result": 999}
-        assert get_amount_from_transaction(list_for_filter_by_currency[0]) == 999
+        assert get_amount_from_transaction(list_of_transactions[0]) == 999
 
         load_dotenv()
         api_key = os.getenv("API_KEY")

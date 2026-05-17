@@ -1,19 +1,23 @@
+import logging
 import os
 from typing import Any
 
 import requests
 from dotenv import load_dotenv
 
+from configurate.logging_config import setup_logging
 from custom_errors import EmptyError, StatusError
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
 
+api_logger = logging.getLogger("external_api")
+
 
 def get_amount_from_transaction(transaction: dict) -> float | None | Any:
     """this function gets the amount from the transaction
     if currency is an EUR or USD then it converts it to RUB and return"""
-
+    api_logger.info("START getting amount from transaction")
     try:
         if not transaction:
             raise EmptyError("your transaction is empty")
@@ -35,10 +39,17 @@ def get_amount_from_transaction(transaction: dict) -> float | None | Any:
         return round(result["result"], 2)
 
     except StatusError as se:
-        print(se.__str__())
+        api_logger.error(se.__str__())
+        return None
     except EmptyError as e:
-        print(e.__str__())
+        api_logger.error(e.__str__())
+        return None
     except KeyError:
-        print("KeyError: can not find key")
+        api_logger.error("KeyError: can not find key")
+        return None
+    finally:
+        api_logger.info("END getting amount from transaction")
 
-    return None
+
+if __name__ == "__main__":
+    setup_logging()

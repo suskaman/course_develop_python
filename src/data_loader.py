@@ -8,12 +8,12 @@ from configurate.logging_config import setup_logging
 data_logger = logging.getLogger("data_loader")
 
 
-def get_data_from_csv(path_to_csv: str):
+def get_data_from_csv(path_to_csv: str) -> list[dict]:
     """this function gets the data from the csv file"""
     data_logger.info("START getting data from csv")
 
     try:
-        df = pd.read_csv(path_to_csv, sep=';')
+        df = pd.read_csv(path_to_csv, sep=";")
         data_logger.info("CSV file loaded")
         return df.to_dict(orient="records")
 
@@ -52,6 +52,3 @@ def get_data_from_excel(path_to_xlsx: str) -> list[dict]:
 
 if __name__ == "__main__":
     setup_logging()
-
-    res = get_data_from_excel("../data/transactions_excel.xlsx")
-    print(res[0])

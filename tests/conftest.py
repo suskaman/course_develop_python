@@ -81,7 +81,7 @@ def result_for_filter_by_currency() -> list[dict]:
 
 
 @pytest.fixture
-def list_for_filter_by_currency() -> list[dict]:
+def list_of_transactions() -> list[dict]:
     return [
         {
             "id": 939719570,
