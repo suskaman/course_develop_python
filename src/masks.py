@@ -1,7 +1,7 @@
 import logging
 from typing import Union
 
-from logging_config import setup_logging
+from configurate.logging_config import setup_logging
 
 # create logger
 mask_logger = logging.getLogger("masks")

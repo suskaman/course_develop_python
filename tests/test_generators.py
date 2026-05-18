@@ -1,16 +1,14 @@
 from src import generators
 
 
-def test_filter_by_currency(
-    result_for_filter_by_currency: list[dict], list_for_filter_by_currency: list[dict]
-) -> None:
-    assert list(generators.filter_by_currency(list_for_filter_by_currency, "USD")) == result_for_filter_by_currency
+def test_filter_by_currency(result_for_filter_by_currency: list[dict], list_of_transactions: list[dict]) -> None:
+    assert list(generators.filter_by_currency(list_of_transactions, "USD")) == result_for_filter_by_currency
     assert generators.filter_by_currency([{}], "USD") == [{}]
-    assert list(generators.filter_by_currency(list_for_filter_by_currency, "EUR")) == []
+    assert list(generators.filter_by_currency(list_of_transactions, "EUR")) == []
 
 
-def test_transaction_descriptions(list_for_filter_by_currency: list[dict]) -> None:
-    generator = generators.transaction_descriptions(list_for_filter_by_currency)
+def test_transaction_descriptions(list_of_transactions: list[dict]) -> None:
+    generator = generators.transaction_descriptions(list_of_transactions)
     assert next(generator) == "Перевод организации"
     assert next(generator) == "Перевод со счета на счет"
     assert next(generator) == "Перевод со счета на счет"
